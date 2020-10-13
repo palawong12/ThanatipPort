@@ -1,0 +1,24 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<style type="text/css">
+	img{
+		max-width: 100%;
+		object-fit: cover;
+	}
+</style>
+
+<div class="main-container">
+    {% if post.picture %}
+
+	<img src="{{ post.picture.url }}">
+	{% endif %}
+    <h1>{{post.headline}}</h1>
+	<h4>{{post.sub_headline}}</h4>
+	<hr>
+
+	<p>{{post.body|linebreaks}}</p>
+</div>
+{% endblock content %}
