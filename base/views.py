@@ -4,6 +4,9 @@ from .models import Post
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required
 
+def snake(request):
+    return render(request, 'base/snake.html')
+
 def present(request):
     return render(request, 'base/present.html')
 

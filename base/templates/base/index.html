@@ -125,6 +125,10 @@
 							<h6 class="post-title">{{post.headline}}</h6>
 							<p class="post-intro">{{post.sub_headline}}</p>
 							<a href="{%  url 'post' post.id %}">Read More</a>
+							<hr>
+							{% if request.user.is_authenticated %}
+							<a href="{% url 'snake' %}">Try it!</a> 
+							{% endif %}
 						</div>
 					</div>
 				</div>

@@ -20,5 +20,8 @@
 	<hr>
 
 	<p>{{post.body|linebreaks}}</p>
+	{% if request.user.is_authenticated %}
+							<a href="{% url 'snake' %}">Try it!</a> 
+							{% endif %}
 </div>
 {% endblock content %}
