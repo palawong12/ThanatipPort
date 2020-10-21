@@ -38,7 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'base.apps.BaseConfig',
+    'crispy_forms',
+    'django_filters',
+    'ckeditor',
+    'ckeditor_uploader',
+    'storages',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     
@@ -130,3 +137,32 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "YOU_EMAIL"
+EMAIL_HOST_PASSWORD = 'YOU_EMAIL_PASSWORD'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+    },
+}
+
+AWS_QUERYSTRING_AUTH = False
+
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+#AWS_ACCESS_KEY_ID = 'YOUR-AWS-ACCESS-KEY-ID'
+#AWS_SECRET_ACCESS_KEY = 'YOUR_AWS-SECRET-ACCESS-KEY'
+#AWS_STORAGE_BUCKET_NAME = 'YOU_BUCKET_NAME'
+
+#AWS_S3_FILE_OVERWRITE = False
+#AWS_DEFAULT_ACL = None

@@ -5,6 +5,13 @@
 <head>
 	<title>Thanatip S.</title>
 
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+  
+		gtag('config', 'UA-47692315-56');
+	  </script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
 
@@ -15,6 +22,13 @@
 
 	<link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
 	<link id="theme-style" rel="stylesheet" type="text/css" href="">
+
+	<!-- Icon -->
+	<link rel="shortcut icon" href="{% static 'ico/favicon.png' %}">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'ico/apple-touch-icon-144-precomposed.png' %}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'ico/apple-touch-icon-114-precomposed.png' %}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'ico/apple-touch-icon-72-precomposed.png' %}">
+        <link rel="apple-touch-icon-precomposed" href="{% static 'ico/apple-touch-icon-57-precomposed.png' %}">
 </head>
 
 <body>
@@ -35,6 +49,7 @@
 
 					<div id="theme-options-wrapper">
 						<div data-mode="light" id="light-mode" class="theme-dot"></div>
+						<div data-mode="red" id="redx-mode" class="theme-dot"></div>
 						<div data-mode="blue" id="blue-mode" class="theme-dot"></div>
 						<div data-mode="green" id="green-mode" class="theme-dot"></div>
 						<div data-mode="purple" id="purple-mode" class="theme-dot"></div>
@@ -96,6 +111,8 @@
 				</div>
 
 
+
+				
 				<div class="social-links">
 					<img id="social_img" src="{% static 'images/following.jpg' %}">
 					<h3>Find me on Below</h3>
@@ -108,6 +125,73 @@
 		</div>
 	</section>
 
+	<section class="s1">
+		<div class="main-container">
+			<div class="featured_video_wrapper">
+				<iframe class="featured_video" width="560" height="315" src="https://www.youtube.com/embed/mYwL8kMzB74" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<div class="featured_message">
+			
+						<h2>First Short Movie</h2>
+						<h1>Teenager</h1>
+						<p>This is my first short movie since KingPetch School.</p>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="s2">
+		<div class="main-container">
+			<div class="featured_video_wrapper">
+				<div class="featured_message">
+						<h2 style="font-size: 52px">First HTML5 Game</h2>
+						<h2>Snake Game</h2>
+						<p>This is my first HTML5 Game.</p>
+				</div>
+
+				<div class="social-links">
+					<img id="social_img" src="{% static 'images/HTMLGAME.jpg' %}">
+					<br>
+					<a href="{% url 'snakegame' %}">Try It Here!!!</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<style>
+		.featured_video_wrapper{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-evenly;
+			padding-top:50px;
+			padding-bottom: 50px;
+		}
+
+		.featured_message{
+			display: flex;
+			flex-wrap: wrap;
+			align-content: center;
+			align-items: center;
+			max-width: 400px;
+			padding-top:20px;
+			padding-bottom: 20px;
+
+		}
+
+		.featured_message h1{
+			font-size: 100px;
+		}
+
+		.featured_message > *{
+			margin: 0;
+			padding: 0;
+
+		}
+
+		@media screen and (max-width: 560px){
+			#featured_video{
+				width:100%;
+			}
+		}
+	</style>
 	<section class="s1">
 		<div class="main-container">
 			<h3 style="text-align: center;">Some of my past projects</h3>
@@ -124,25 +208,11 @@
 						<div class="post-preview">
 							<h6 class="post-title">{{post.headline}}</h6>
 							<p class="post-intro">{{post.sub_headline}}</p>
-							<a href="{%  url 'post' post.id %}">Read More</a>
-							<hr>
-							{% if request.user.is_authenticated %}
-							<a href="{% url 'snake' %}">Try it!</a> 
-							{% endif %}
+							<a href="{%  url 'post' post.slug %}">Read More</a>
 						</div>
 					</div>
 				</div>
 				{% endfor %}
-				<div>
-					<div class="post">
-						<img class="thumbnail" src="{% static 'images/Hellomobile.jpg' %}">
-						<div class="post-preview">
-							<h6 class="post-title">Hellomobile Project Present</h6>
-							<p class="post-intro">Present Project Hellomobile At Siam Dhurakit Technology College</p>
-							<a href="{% url 'present' %}">Read More</a>
-						</div>
-					</div>
-				</div>
 			</div>
 			<p align="center">
 				<a href="{% url 'posts' %}">View more</a>
@@ -155,25 +225,26 @@
 			<a href=""></a>
 			<h3 style="text-align: center;">Get In Touch</h3>
 
-			<form id="contact-form">
+			<form id="contact-form" method="POST" action="{% url 'send_email' %}">
+				{% csrf_token %}
 				<a name="contact"></a>
 
 				<label>Name</label>
-				<input class="input-field" type="text" name="name">
+				<input required class="input-field" type="text" name="name">
 
 				<label>Subject</label>
-				<input class="input-field" type="text" name="subject">
+				<input required class="input-field" type="text" name="subject">
 
 				<label>Email</label>
-				<input class="input-field" type="text" name="email">
+				<input required class="input-field" type="text" name="email">
 
 				<label>Message</label>
-				<textarea class="input-field" name="message"></textarea>
+				<textarea required class="input-field" name="message"></textarea>
 
 				<input id="submit-btn" type="submit" value="Send">
 			</form>
 		</div>
-	</section>
+	</section> 
 	<script type="text/javascript">
 		var static = "{% static 'css' %}" </script>
 	<script>
@@ -213,6 +284,10 @@
 
 			if (mode == 'purple') {
 				document.getElementById('theme-style').href = static + '/purple.css'
+			}
+
+			if (mode == 'red') {
+				document.getElementById('theme-style').href = static + '/red.css'
 			}
 
 			localStorage.setItem('theme', mode)

@@ -216,11 +216,16 @@ h6 { font-size: 16px;}
 }
 
 #green-mode{
-	background-color: #78866b;
+	background-color: #ecb679;
 }
 
 #purple-mode{
 	background-color: #7E4C74;
+}
+
+#redx-mode{
+	background-color: #b70104;
+;
 }
 
 #settings-note{
@@ -353,14 +358,11 @@ h6 { font-size: 16px;}
 	display:inline-block;
 	color:#fff;
 	background-color: #888;
-	border-style: 5px;
+	border-radius: 5px;
 	margin: 2px;
 	padding: 2px 5px;
-	font-size: 12px;
-
-	  
+	font-size: 12px;	
 }
-
 
 #contact-form{
 	display: block;
@@ -373,6 +375,8 @@ h6 { font-size: 16px;}
 	margin-bottom: 50px;
 
 }
+
+
 
 #contact-form label{
 	line-height: 2.7em;

@@ -6,14 +6,17 @@
 <div id="dot-1" class="browser-dot"></div>
 <div id="dot-2" class="browser-dot"></div>
 <div id="dot-3" class="browser-dot"></div>
+
 </div></a>
 							
 							
 <ul id="navigation">
+    
 <li><a href="{% url 'home' %}">Contact</a></li>
-    {% if request.user.is_authenticated %}
-    <li><a href="{% url 'home' %}">Home</a></li>    
-    {% endif %}
+{% if request.user.is_authenticated %}
+<!<li><a href="{% url 'create_post' %}">Create Post</a></li>
+{% endif %}
+<li><a href="{% url 'hometh' %}">ภาษาไทย</a></li>
 							
 </ul>
 </div>
