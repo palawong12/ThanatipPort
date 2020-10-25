@@ -364,6 +364,15 @@ h6 { font-size: 16px;}
 	font-size: 12px;	
 }
 
+::-webkit-scrollbar {
+	width:10px;
+	background:#222;
+  }
+  ::-webkit-scrollbar-thumb {
+	background:#3772ff;
+	box-shadow:0 -0vh 0 0vh #3772ff;
+  }
+
 #contact-form{
 	display: block;
 	max-width: 600px;

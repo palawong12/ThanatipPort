@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.core.mail import EmailMessage
+from django.contrib import messages
 from django.conf import settings
 from django.template.loader import render_to_string
 
@@ -110,7 +111,7 @@ def sendEmail(request):
 			request.POST['subject'],
 			template,
 			settings.EMAIL_HOST_USER,
-			['dennisivy11@gmail.com']
+			['jakkapan225@gmail.com']
 			)
 
 		email.fail_silently=False

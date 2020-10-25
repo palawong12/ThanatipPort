@@ -3,8 +3,13 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+
+admin.sites.AdminSite.site_header = 'THANATIP'
+admin.sites.AdminSite.site_title = 'THANATIP'
+
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),    
     path('', include('base.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 
