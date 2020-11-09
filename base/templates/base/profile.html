@@ -31,14 +31,16 @@
 
 	<div class="profile_intro">
 		<div>
-			<img class="profile_pic" src="{% static 'images/dennis.jpg' %}">
+			<img class="profile_pic" src="{% static 'images/thanatip.jpg' %}">
 			<br>
-			<p>myemail@gmail.com</p>
+			<hr>
+			<p>palawong1234@hotmail.com</p>
+			<hr>
 		</div>
 
 
 		<div>
-			<h3>Full Name</h3>
+			<h3>Thanatip Saengow</h3>
 			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
 		</div>
 	</div>
@@ -52,9 +54,9 @@
 				<th>View</th>
 			</tr>
 		</thead>
-
+		
 		<tr>
-			<td><img class="post-preview" src="{% static 'images/dash.jpg' %}"></td>
+			<td><img class="post-preview" src="{{post.picture.url}}"></td>
 			<td>Post #1</td>
 			<td>11-29-2020</td>
 			<td><a class="btn btn-sm btn-dark" href="#">View Post</a></td>

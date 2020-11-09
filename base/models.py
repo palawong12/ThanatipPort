@@ -39,13 +39,20 @@ class Post(models.Model):
 
 		super().save(*args, **kwargs)
 
-
-class PostTH(models.Model):
+class PostImg(models.Model):
 	headline = models.CharField(max_length=200)
 	sub_headline = models.CharField(max_length=200, null=True, blank=True)
-	picture = models.ImageField(null=True, blank=True, upload_to="images", default="placeholder.png")
+	picture = models.ImageField(null=True, blank=True, upload_to="gallerys", default="placeholder.png")
 	body = RichTextUploadingField(null=True, blank=True)
 	created = models.DateTimeField(auto_now_add=True)
+	picture1 = models.ImageField(null=True, blank=True, upload_to="gallerys", default="placeholder.png")
+	picture2 = models.ImageField(null=True, blank=True, upload_to="gallerys", default="placeholder.png")
+	picture3 = models.ImageField(null=True, blank=True, upload_to="gallerys", default="placeholder.png")
+	picture4 = models.ImageField(null=True, blank=True, upload_to="gallerys", default="placeholder.png")
+	picture5 = models.ImageField(null=True, blank=True, upload_to="gallerys", default="placeholder.png")
+	picture6 = models.ImageField(null=True, blank=True, upload_to="gallerys", default="placeholder.png")
+	picture7 = models.ImageField(null=True, blank=True, upload_to="gallerys", default="placeholder.png")
+	picture8 = models.ImageField(null=True, blank=True, upload_to="gallerys", default="placeholder.png")
 	active = models.BooleanField(default=False)
 	featured = models.BooleanField(default=False)
 	tags = models.ManyToManyField(Tag, null=True, blank=True)
@@ -53,19 +60,22 @@ class PostTH(models.Model):
 	
 	def __str__(self):
 		return self.headline
-
+		
 	def save(self, *args, **kwargs):
 
 		if self.slug == None:
 			slug = slugify(self.headline)
 
-			has_slug = PostTH.objects.filter(slug=slug).exists()
+			has_slug = PostImg.objects.filter(slug=slug).exists()
 			count = 1
 			while has_slug:
 				count += 1
 				slug = slugify(self.headline) + '-' + str(count) 
-				has_slug = PostTH.objects.filter(slug=slug).exists()
+				has_slug = PostImg.objects.filter(slug=slug).exists()
 
 			self.slug = slug
 
 		super().save(*args, **kwargs)
+
+
+

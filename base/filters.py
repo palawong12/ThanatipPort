@@ -14,12 +14,11 @@ class PostFilter(django_filters.FilterSet):
 		model = Post
 		fields = ['headline', 'tags']
 
-
-class PostFilterTH(django_filters.FilterSet):
+class ImgFilter(django_filters.FilterSet):
 	headline = CharFilter(field_name='headline', lookup_expr="icontains", label='Headline')
 	tags = django_filters.ModelMultipleChoiceFilter(queryset=Tag.objects.all(),
 		widget=forms.CheckboxSelectMultiple
 		)
 	class Meta:
-		model = PostTH
+		model = PostImg
 		fields = ['headline', 'tags']

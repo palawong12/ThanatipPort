@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 
-from .models import Post, PostTH
+from .models import Post, PostImg
 
 class PostForm(ModelForm):
 
@@ -13,11 +13,10 @@ class PostForm(ModelForm):
 			'tags':forms.CheckboxSelectMultiple(),
 		}
 
-
-class PostFormTH(ModelForm):
+class PostImgForm(ModelForm):
 
 	class Meta:
-		model = PostTH
+		model = PostImg
 		fields = '__all__'
 
 		widgets = {

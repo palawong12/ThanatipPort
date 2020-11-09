@@ -8,16 +8,15 @@ from django.contrib import messages
 from django.conf import settings
 from django.template.loader import render_to_string
 
-from .forms import PostForm, PostFormTH
-from .filters import PostFilter, PostFilterTH
+from .forms import PostForm, PostImgForm
+from .filters import PostFilter, ImgFilter
 
-from .models import Post, PostTH
+from .models import Post, PostImg
+
+
 
 def snakegame(request):
     return render(request, 'base/snakegame.html')
-
-def present(request):
-    return render(request, 'base/present.html')
 
 def home(request):
     posts = Post.objects.filter(active=True, featured=True)[0:3]
@@ -51,9 +50,6 @@ def post(request, slug):
 
 	context = {'post':post}
 	return render(request, 'base/post.html', context)
-
-def profile(request):
-	return render(request, 'base/profile.html')
 
 
 @login_required(login_url="home")
@@ -97,6 +93,8 @@ def deletePost(request, slug):
 	return render(request, 'base/delete.html', context)
 
 
+
+
 def sendEmail(request):
 
 	if request.method == 'POST':
@@ -119,6 +117,9 @@ def sendEmail(request):
 
 	return render(request, 'base/email_sent.html')
 
+def profile(request):
+	return render(request, 'base/profile.html')
+
 
 	#Thailand
 def hometh(request):
@@ -134,26 +135,71 @@ def navbarth(request):
 def mainth(request):
     return render(request, 'base/mainth.html')
 
-#def poststh(request):
-#	posts = PostTH.objects.filter(active=True)
-#	myFilter = PostFilterTH(request.GET, queryset=posts)
-#	posts = myFilter.qs
-#
-#	page = request.GET.get('page')
-#
-#	paginator = Paginator(posts, 5)
-#
-#	try:
-#		posts = paginator.page(page)
-#	except PageNotAnInteger:
-#	except EmptyPage:
-#		posts = paginator.page(paginator.num_pages)
-#
-#	context = {'posts':posts, 'myFilter':myFilter}
-#	return render(request, 'base/poststh.html', context)
-#
-#def postth(request, slug):
-#	post = PostTH.objects.get(slug=slug)
-#
-#	context = {'post':post}
-#	return render(request, 'base/postth.html', context)
+
+#########################################################################################
+def imgs(request):
+	imgs = PostImg.objects.filter(active=True)
+	myFilter = ImgFilter(request.GET, queryset=imgs)
+	imgs = myFilter.qs
+
+	page = request.GET.get('page')
+
+	paginator = Paginator(imgs, 5)
+
+	try:
+		imgs = paginator.page(page)
+	except PageNotAnInteger:
+		imgs = paginator.page(1)
+	except EmptyPage:
+		imgs = paginator.page(paginator.num_pages)
+
+	context = {'imgs':imgs, 'myFilter':myFilter}
+	return render(request, 'base/gallerylist.html', context)
+
+
+def img(request, slug):
+	img = PostImg.objects.get(slug=slug)
+
+	context = {'img':img}
+	return render(request, 'base/postimg.html', context)
+
+
+@login_required(login_url="home")
+def createImg(request):
+	form = PostImgForm()
+
+	if request.method == 'POST':
+		form = PostImgForm(request.POST, request.FILES)
+		if form.is_valid():
+			form.save()
+		return redirect('album')
+
+	context = {'form':form}
+	return render(request, 'base/postimg_form.html', context)
+
+
+
+@login_required(login_url="home")
+def updateImg(request, slug):
+	img = PostImg.objects.get(slug=slug)
+	form = PostImgForm(instance=img)
+
+	if request.method == 'POST':
+		form = PostImgForm(request.POST, request.FILES, instance=img)
+		if form.is_valid():
+			form.save()
+		return redirect('album')
+
+	context = {'form':form}
+	return render(request, 'base/postimg_form.html', context)
+
+
+@login_required(login_url="home")
+def deleteImg(request, slug):
+	img = PostImg.objects.get(slug=slug)
+
+	if request.method == 'POST':
+		img.delete()
+		return redirect('album')
+	context = {'item':img}
+	return render(request, 'base/deleteimg.html', context)

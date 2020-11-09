@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Post, Tag, PostTH
-
+from .models import Post, Tag, PostImg
+    
 admin.site.register(Post)
 admin.site.register(Tag)
-admin.site.register(PostTH)
+admin.site.register(PostImg)
