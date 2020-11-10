@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="SHORTCUT ICON" href="{% static 'photos/media/favicon.ico' %}" />
+	<link rel="shortcut icon" href="{% static 'ico/thanatipicon.png' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
     
@@ -28,13 +28,16 @@
         </div>
     </nav>
     {% for img in imgs %}
+    <div class="thumbs">    
             <a class="col-xs-12 col-sm-6 col-lg-4 thumb" href="{% url 'img' img.slug %}"><img class="img-responsive" src="{{img.picture.url}}" ><span class="photo-label">{{img.headline}}</span></a>
-					{% endfor %}
+                    {% endfor %}
+    </div>
     
     
-                    <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
-                    <script src="{% static 'js/bootstrap.min.js' %}"></script> 
-
+                   
+    <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script> 
  
 </body>
+
 

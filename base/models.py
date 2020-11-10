@@ -53,6 +53,7 @@ class PostImg(models.Model):
 	picture6 = models.ImageField(null=True, blank=True, upload_to="gallerys", default="placeholder.png")
 	picture7 = models.ImageField(null=True, blank=True, upload_to="gallerys", default="placeholder.png")
 	picture8 = models.ImageField(null=True, blank=True, upload_to="gallerys", default="placeholder.png")
+	picture9 = models.ImageField(null=True, blank=True, upload_to="gallerys", default="placeholder.png")
 	active = models.BooleanField(default=False)
 	featured = models.BooleanField(default=False)
 	tags = models.ManyToManyField(Tag, null=True, blank=True)

@@ -1,60 +1,117 @@
 
 {% load static %}
-{% block content %}
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{% static 'ico/thanatipicon.png' %}">
+
 <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Russo+One&display=swap"
     rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/swipebox.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/img.css' %}" />
     <link rel="stylesheet"  href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <style type="text/css">
-        img{
-            max-width: 100%;
-            object-fit: cover;
-        }
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-        .featured_image{
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-    </style>
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+ 
+    <script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 <body>
 
     <div class="main-container">
         <br>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
         <a class="btn btn-sm btn-primary" href="{% url 'album' %}">&laquo Back to Posts</a>
         {% if request.user.is_authenticated %}
             <a class="btn btn-sm btn-primary" href="{% url 'update_img' img.slug %}">Edit</a>
             <a class="btn btn-sm btn-danger" href="{% url 'delete_img' img.slug %}">Delete</a>
         {% endif %}
-        <center><h1>{{img.headline}}</h1></center>
+        <center><h1 style="font-family:Russo One;font-size:500%;color:white;" >{{img.headline}}</h1></center>
         <hr>
         <center>
         <img class="featured_image" src="{{img.picture.url}}">
         </center>
-        <br>
     </div>
-                    <center>
-                    <hr>
-                    <img class="img-responsive" src="{{img.picture1.url}}" width="400">&nbsp;&nbsp;
-                    <img class="img-responsive" src="{{img.picture2.url}}" width="400">&nbsp;&nbsp;
-                    <img class="img-responsive" src="{{img.picture3.url}}" width="400">&nbsp;&nbsp;
-                    <img class="img-responsive" src="{{img.picture4.url}}" width="400">&nbsp;&nbsp;
-                    <br><br>
-                    <img class="img-responsive" src="{{img.picture5.url}}" width="400">&nbsp;&nbsp;
-                    <img class="img-responsive" src="{{img.picture6.url}}" width="400">&nbsp;&nbsp;
-                    <img class="img-responsive" src="{{img.picture7.url}}" width="400">&nbsp;&nbsp;
-                    <img class="img-responsive" src="{{img.picture8.url}}" width="400">&nbsp;&nbsp;
-                    </center>
-                    <hr>
+
+    <div class="container page-top">
+
+
+
+        <div class="row">
+
+
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="{{img.picture1.url}}" class="fancybox" rel="ligthbox">
+                    <img  src="{{img.picture1.url}}" class="zoom img-fluid "  alt="">
+                   
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="{{img.picture2.url}}" class="fancybox" rel="ligthbox">
+                    <img  src="{{img.picture2.url}}" class="zoom img-fluid "  alt="">
+            </a>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="{{img.picture3.url}}" class="fancybox" rel="ligthbox">
+                    <img  src="{{img.picture3.url}}" class="zoom img-fluid "  alt="">
+            </a>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="{{img.picture4.url}}" class="fancybox" rel="ligthbox">
+                    <img  src="{{img.picture4.url}}" class="zoom img-fluid "  alt="">
+            </a>
+            </div>
+            
+             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="{{img.picture5.url}}" class="fancybox" rel="ligthbox">
+                    <img  src="{{img.picture5.url}}" class="zoom img-fluid "  alt="">
+            </a>
+            </div>
+            
+             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="{{img.picture6.url}}" class="fancybox" rel="ligthbox">
+                    <img  src="{{img.picture6.url}}" class="zoom img-fluid "  alt="">
+            </a>
+            </div>
+            
+             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="{{img.picture7.url}}" class="fancybox" rel="ligthbox">
+                    <img  src="{{img.picture7.url}}" class="zoom img-fluid "  alt="">
+            </a>
+            </div>
+            
+             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="{{img.picture8.url}}" class="fancybox" rel="ligthbox">
+                    <img  src="{{img.picture8.url}}" class="zoom img-fluid "  alt="">
+            </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a href="{{img.picture9.url}}" class="fancybox" rel="ligthbox">
+                    <img  src="{{img.picture9.url}}" class="zoom img-fluid "  alt="">
+            </a>
+            </div>
+            
+           
+           
+       </div>
+
+     
+      
+
+    </div>
 
 
 
@@ -66,4 +123,18 @@
         </footer>
     </body>
 
-    {% endblock content %}
+    <script>$(document).ready(function(){
+        $(".fancybox").fancybox({
+              openEffect: "none",
+              closeEffect: "none"
+          });
+          
+          $(".zoom").hover(function(){
+              
+              $(this).addClass('transition');
+          }, function(){
+              
+              $(this).removeClass('transition');
+          });
+      });
+          </script>

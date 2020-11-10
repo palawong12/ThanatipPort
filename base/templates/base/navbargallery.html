@@ -1,9 +1,7 @@
-<div class="nav-wrapper">
-							
-    <!-- Link around dots-wrapper added after tutorial video -->
-    
-                                
-                                
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbargallery.css' %}" />
+
+<div class="nav-wrapper">             
     <ul id="navigation">
     
     {% if request.user.is_authenticated %}

@@ -1,9 +1,15 @@
+body {
+    background-color:#1d1d1d !important;
+    padding-top: 50px; 
+    color:#989898;
+  }
 
-
-.nav{
-    font-size: 16px;
+  .nav{
+    font-family:'Russo One';
+    font-size: 20px;
     font-weight:bold;
     padding:0;
+    
 }
 
 .nav-bottom{
@@ -26,7 +32,7 @@
 
 
 .container-fluid{
-    background-color:white;
+    background-color:rgb(255, 255, 255);
 }
 
 .thumb {
@@ -60,13 +66,14 @@ background-color:blue;
 .picture{
     overflow:hidden;
 }
-
+.container img {
+}
 
 
 .photo-label {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-weight: normal;
-    font-size:40px;
+    font-family: "Russo One";
+    font-weight: bold;
+    font-size:50px;
     color:white;
     text-transform: uppercase;
     position: absolute;      
@@ -81,31 +88,13 @@ background-color:blue;
                  -moz-transition: opacity .5s;
                     -webkit-transition: opacity .5s;
 }
-
-@font-face {
-    font-family: Quicksand;
-    src: url("/static/photos/otf/Quicksand-Regular.otf") format("opentype");
-}
-@font-face {
-    font-family: Quicksand;
-    font-weight: lighter;
-    src: url("/static/photos/otf/Quicksand-Light.otf") format("opentype");
-}
-
-.text
+.thumbs img
 {
-z-index:100;
-position:absolute;    
-bottom: 20px;
-left:0;
-margin-left:15%;
-margin-right:15%;
-text-align:center;
-color:white;
-font-size:26px;
-font-family: "Quicksand"; 
-font-weight: lighter;
+    opcacity: 1;
 }
+
+
+
 
 .background {
 /* Set rules to fill background */
@@ -126,7 +115,8 @@ left: 0;
     -webkit-filter: blur(3px); /* Google Chrome & Safari 6+ */
     filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
 }
-
+.background img{
+}
 
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
 .background {
