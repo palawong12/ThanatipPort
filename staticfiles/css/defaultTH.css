@@ -361,8 +361,17 @@ h6 { font-size: 16px;}
 	border-radius: 5px;
 	margin: 2px;
 	padding: 2px 5px;
-	font-size: 12px;
+	font-size: 12px;	
 }
+
+::-webkit-scrollbar {
+	width:10px;
+	background:#222;
+  }
+  ::-webkit-scrollbar-thumb {
+	background:#3772ff;
+	box-shadow:0 -100vh 0 100vh #3772ff;
+  }
 
 #contact-form{
 	display: block;
@@ -375,8 +384,6 @@ h6 { font-size: 16px;}
 	margin-bottom: 50px;
 
 }
-
-
 
 #contact-form label{
 	line-height: 2.7em;
