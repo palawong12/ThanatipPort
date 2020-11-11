@@ -144,7 +144,7 @@ def imgs(request):
 
 	page = request.GET.get('page')
 
-	paginator = Paginator(imgs, 5)
+	paginator = Paginator(imgs, 6)
 
 	try:
 		imgs = paginator.page(page)

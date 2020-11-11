@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'storages',
-    'imagekit',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -144,7 +143,7 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
     },
 }
-
+    
 AWS_QUERYSTRING_AUTH = False
 
 #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
