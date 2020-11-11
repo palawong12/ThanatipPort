@@ -1,1 +1,3 @@
+[![Python 3.6](https://img.shields.io/badge/python-3.6-yellow.svg)](https://www.python.org/downloads/release/python-360/)
+![Django 3.0](https://img.shields.io/badge/Django-3.0-green.svg)
 # Portfolio Thanatip
