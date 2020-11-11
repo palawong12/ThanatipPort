@@ -40,3 +40,12 @@ img.featured_image{
         display:none;  
       }
   
+
+      ::-webkit-scrollbar {
+        width:10px;
+        background:#222;
+      }
+      ::-webkit-scrollbar-thumb {
+        background:#3772ff;
+        box-shadow:0 -100vh 0 100vh #3772ff;
+      }
