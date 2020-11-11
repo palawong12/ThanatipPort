@@ -2,7 +2,8 @@
 ![Django 3.0.5](https://img.shields.io/badge/Django-3.0.5-green.svg)
 [![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/palawong12/ThanatipPort/blob/main/LICENSE)
 
-# Django Portfolio Thanatip
+# Django Portfolio
+Django Portfolio Thanatip S.
 
 ## Installation
 
