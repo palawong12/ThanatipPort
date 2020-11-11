@@ -1,5 +1,7 @@
 [![Python 3.8](https://img.shields.io/badge/python-3.8-yellow.svg)](https://www.python.org/downloads/release/python-380/)
 ![Django 3.0.5](https://img.shields.io/badge/Django-3.0.5-green.svg)
+[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/palawong12/ThanatipPort/blob/main/LICENSE)
+
 # Django Portfolio Thanatip
 
 ## Installation
