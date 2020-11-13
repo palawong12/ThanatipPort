@@ -8,8 +8,14 @@ urlpatterns = [
 	path('profile/', views.profile, name="profile"),
 	path('post/snake/snakegame/', views.snakegame, name='snakegame'),
 
+	#Login
+	path('login/', views.loginPage, name="login"),
+	path('register/', views.registerPage, name="register"),
+	path('logout/', views.logoutUser, name="logout"),
+	path('account/', views.userAccount, name="account"),
+	path('update_profile/', views.updateProfile, name="update_profile"),
 
-
+	#Images Post
 	path('album/', views.imgs, name="album"),
 	path('postimg/<slug:slug>/', views.img, name="img"),
 	path('create_postimg/', views.createImg, name="create_img"),

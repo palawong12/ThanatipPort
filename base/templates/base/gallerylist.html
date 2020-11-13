@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="themed-galleries">
                 <ul class="nav navbar-nav">
                     <li class="divider"></li>
-                    {% if request.user.is_authenticated %}
+                    {% if request.user.is_staff %}
                     <li><a href="{% url 'create_img' %}">Create Image</a></li>
                     {% endif %}             
                 </ul>
@@ -39,5 +39,7 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script> 
  
 </body>
+
+
 
 

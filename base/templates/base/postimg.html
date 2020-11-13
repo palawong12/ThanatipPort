@@ -33,7 +33,7 @@
         &nbsp;
         &nbsp;
         <a class="btn btn-sm btn-primary" href="{% url 'album' %}">&laquo Back to Images</a>
-        {% if request.user.is_authenticated %}
+        {% if request.user.is_staff %}
             <a class="btn btn-sm btn-primary" href="{% url 'update_img' img.slug %}">Edit</a>
             <a class="btn btn-sm btn-danger" href="{% url 'delete_img' img.slug %}">Delete</a>
         {% endif %}
@@ -113,6 +113,7 @@
 
     </div>
 
+    
 
 
 

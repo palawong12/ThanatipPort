@@ -1,10 +1,7 @@
 {% extends 'base/main.html' %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet"  href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css"
->
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+
 <style type="text/css">
 	img{
 		max-width: 100%;
@@ -15,18 +12,78 @@
 		margin-top: 20px;
 		margin-bottom: 20px;
 	}
+
+	.post-container{
+			width: 1300px;
+			margin: 0 auto;
+			padding-top: 20px;
+			padding-bottom: 20px;
+	}
+
+	.comments-wrapper{
+		margin-top: 50px;
+		padding: 10px;
+		border:1px solid var(--borderColor);
+		-webkit-box-shadow: -1px 1px 3px -1px rgba(0,0,0,0.75);
+		-moz-box-shadow: -1px 1px 3px -1px rgba(0,0,0,0.75);
+		box-shadow: -1px 1px 3px -1px rgba(0,0,0,0.75);
+	}
+
+	.comment{
+		display: flex;
+		padding: 15px;
+	}
+
+	.comment-author{
+		font-size: 14px;
+		font-weight: 700;
+		color: rgb(30, 174, 219) !important;
+		margin: 2px;
+	}
+
+	.author-pic{
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		margin-right: 10px;
+	}
+
+	.comment-body{
+		font-size: 14px;
+	}
+
+	@media screen and (max-width: 1200px){
+		.post-container{
+			width: 100%;
+		}
+	}
 </style>
 
-<div class="main-container">
-	<hr>
+<div class="post-container">
+	{% if messages %}
+		{% for message in messages %}
+			{% if message.tags == 'success' %}
+				<div class="alert alert-success" role="alert">
+					<span>{{message}}</span>					
+				</div>
+			{% elif message.tags == 'error' %}
+				<div class="alert alert-danger" role="alert">
+					<span>{{message}}</span>					
+				</div>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+
+
 	<a class="btn btn-sm btn-primary" href="{% url 'posts' %}">&laquo Back to Posts</a>
-	{% if request.user.is_authenticated %}
+
+	{% if request.user.is_staff %}
 		 <a class="btn btn-sm btn-primary" href="{% url 'update_post' post.slug %}">Edit</a>
 		 <a class="btn btn-sm btn-danger" href="{% url 'delete_post' post.slug %}">Delete</a>
 	{% endif %}
-	<hr>
+	<br>
 	<img class="featured_image" src="{{post.picture.url}}">
-	<hr>
+	<br>
 	{% for tag in post.tags.all %}
 		<span class="tag">{{tag}}</span>
 	{% endfor %}
@@ -34,26 +91,49 @@
 
 	<h1>{{post.headline}}</h1>
 	<h4>{{post.sub_headline}}</h4>
-	<hr>
-	<div class="author-wrapper" style="margin-bottom: 50px">
-		<img id="author-thumbnail"  src="{% static 'images/thanatip.jpg' %}"/>
-		<div>
-		<p style="margin:0">Thanatip Saengowv</p>
-		<small>Posted: {{post.created}}</small>
-		</div>
-		<!--<a target="_blank" href="https://twitter.com/dennisivy11">
-			<img id="author-twitter" src="https://dennisivy-personal.s3.amazonaws.com/images/twitter.png"/>
-		</a>-->
-	</div>
-	<hr>
+	<br>
 
 	<p>{{post.body|safe}}</p>
+
+	 Comments: {{post.postcomment_set.all.count}}</h5>
+		<hr>
+		<!--
+			- Not logged in, output form and say "Register to comment and give room for a message"
+			- When given username 
+		-->
+
+		<form action="" method="POST">
+			{% csrf_token %}
+			<textarea required class="form-control" placeholder="Leave a comment..." name="comment"></textarea>
+			{% if request.user.is_authenticated == False %}
+				<br>
+				<input class="form-control" type="text" name="first_name" placeholder="Name..">
+				<br>
+				<input class="form-control" type="email" name="email" placeholder="Email..">
+				<br>
+				<input class="form-control" type="password" name="password" placeholder="Password..">
+			{% endif %}
+			<br>
+			<input class="btn btn-info" type="submit" value="Submit">
+		</form>
+
+		<hr>
+		{% for comment in post.postcomment_set.all %}
+			<div class="comment">
+				<img class="author-pic" src="{{comment.author.profile_pic.url}}">
+				<div>
+					<p class="comment-author">{{comment.author}}: {{comment.created|date:"M-d-Y"}}</p>
+					<p class="comment-body">{{comment.body}}</p>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 </div>
-	<footer class="py-4 bg-primary text-white-20">
-		<center>
-			<h5 style="color:white;">Copyright &copy; Thanatip Portfolio</h5>
-		</center>	
-	</footer>
-  </body>
+
+<footer class="py-4 bg-primary text-white-20">
+	<center>
+		<h5 style="color:white;">Copyright &copy; Thanatip Portfolio</h5>
+	</center>	
+</footer>
 
 {% endblock content %}
