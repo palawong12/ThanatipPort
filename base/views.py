@@ -76,8 +76,6 @@ def post(request, slug):
 	context = {'post':post}
 	return render(request, 'base/post.html', context)
 
-def profile(request):
-	return render(request, 'base/profile.html')
 
 @admin_only
 @login_required(login_url="home")
