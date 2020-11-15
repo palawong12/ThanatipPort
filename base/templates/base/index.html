@@ -207,6 +207,7 @@
 						<div class="post-preview">
 							<h6 class="post-title">{{post.headline}}</h6>
 							<p class="post-intro">{{post.sub_headline}}</p>
+							<hr>
 							<a href="{%  url 'post' post.slug %}">Read More</a>
 						</div>
 					</div>
@@ -218,8 +219,35 @@
 			</p>
 		</div>
 	</section>
-
 	<section class="s2">
+		<div class="main-container">
+			<h3 style="text-align: center;">My Photo Albums</h3>
+
+			<div class="post-wrapper">
+				{% for img in imgs %}
+				<div>
+					<div class="post">
+						{% if img.picture %}
+
+				<img class="thumbnail" src="{{ img.picture.url }}">
+				{% endif %}
+
+						<div class="post-preview">
+							<h6 class="post-title">{{img.headline}}</h6>
+							<hr>
+							<a href="{%  url 'img' img.slug %}">Read More</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<p align="center">
+				<a href="{% url 'album' %}">View more</a>
+			</p>
+		</div>
+	</section>
+
+	<section class="s1">
 		<div class="main-container">
 			<a href=""></a>
 			<h3 style="text-align: center;">Get In Touch</h3>

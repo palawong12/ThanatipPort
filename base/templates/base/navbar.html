@@ -13,7 +13,6 @@
 
 	<ul id="navigation">
 		<li><a href="{% url 'hometh' %}"</a>ภาษาไทย</li>
-		<li><a href="{% url 'album' %}">Gallery</a></li>
 		<li><a href="{% url 'home' %}#contact">Contact</a></li>
 		{% if request.user.is_authenticated %}
 			<li><a href="{% url 'account' %}"> Account</a></li>

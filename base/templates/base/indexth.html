@@ -199,42 +199,72 @@
 						<div class="post-preview">
 							<h6 class="post-title">{{post.headline}}</h6>
 							<p class="post-intro">{{post.sub_headline}}</p>
-							<a href="{%  url 'post' post.slug %}">Read More</a>
+							<hr>
+							<a href="{%  url 'post' post.slug %}">ดูเพิ่มเติม</a>
 						</div>
 					</div>
 				</div>
 				{% endfor %}
 			</div>
 			<p align="center">
-				<a href="{% url 'posts' %}">View more</a>
+				<a href="{% url 'posts' %}">ดูเพิ่มเติม</a>
 			</p>
 		</div>
 	</section>
 
 	<section class="s2">
 		<div class="main-container">
-			<a href=""></a>
-			<h3 style="text-align: center;">ติดต่อสอบถาม</h3>
+			<h3 style="text-align: center;">อัลบั้มภาพถ่ายของผม</h3>
 
-			<form id="contact-form">
-				<a name="contact"></a>
+			<div class="post-wrapper">
+				{% for img in imgs %}
+				<div>
+					<div class="post">
+						{% if img.picture %}
 
-				<label>ชื่อ</label>
-				<input class="input-field" type="text" name="name">
+				<img class="thumbnail" src="{{ img.picture.url }}">
+				{% endif %}
 
-				<label>ชื่อเรื่อง</label>
-				<input class="input-field" type="text" name="subject">
-
-				<label>อี-เมล์</label>
-				<input class="input-field" type="text" name="email">
-
-				<label>หมายเหตุ</label>
-				<textarea class="input-field" name="message"></textarea>
-
-				<input id="submit-btn" type="submit" value="Send">
-			</form>
+						<div class="post-preview">
+							<h6 class="post-title">{{img.headline}}</h6>
+							<hr>
+							<a href="{%  url 'img' img.slug %}">ดูเพิ่มเติม</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<p align="center">
+				<a href="{% url 'album' %}">ดูเพิ่มเติม</a>
+			</p>
 		</div>
 	</section>
+
+	<section class="s1">
+		<div class="main-container">
+			<a href=""></a>
+			<h3 style="text-align: center;">ติดต่อ</h3>
+
+			<form id="contact-form" method="POST" action="{% url 'send_email' %}">
+				{% csrf_token %}
+				<a name="contact"></a>
+
+				<label>ชื่อ-นามสกุล</label>
+				<input required class="input-field" type="text" name="name">
+
+				<label>ชื่อเรื่อง</label>
+				<input required class="input-field" type="text" name="subject">
+
+				<label>อีเมล์</label>
+				<input required class="input-field" type="email" name="email">
+
+				<label>หมายเหตุ</label>
+				<textarea required class="input-field" name="message"></textarea>
+
+				<input id="submit-btn" type="submit" value="ส่ง">
+			</form>
+		</div>
+	</section> 
 	<script type="text/javascript">
 		var static = "{% static 'css' %}" </script>
 	<script>

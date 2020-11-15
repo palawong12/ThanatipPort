@@ -1,20 +1,24 @@
+{% load static %}
 <div class="nav-wrapper">
-							
-                                
-                                
-    <ul id="navigation">
-        
-    <li><a href="{% url 'home' %}">ภาษาอังกฤษ</a></li>
-    <li><a href="{% url 'album' %}">คลังรูปภาพ</a></li>
-    <li><a href="{% url 'hometh' %}#contact">ติดต่อ</a></li>
 
-    </ul>
-     <!-- Link around dots-wrapper added after tutorial video -->
-     <a href="{% url 'home' %}">
-        <div class="dots-wrapper">
-        <div id="dot-1" class="browser-dot"></div>
-        <div id="dot-2" class="browser-dot"></div>
-        <div id="dot-3" class="browser-dot"></div>
-        
-        </div></a>
-    </div>
+	<!-- Link around dots-wrapper added after tutorial video -->
+	<a href="{% url 'home' %}">
+		<div class="dots-wrapper">
+			<div id="dot-1" class="browser-dot"></div>
+			<div id="dot-2" class="browser-dot"></div>
+			<div id="dot-3" class="browser-dot"></div>
+		</div>
+	</a>
+	
+
+	<ul id="navigation">
+		<li><a href="{% url 'home' %}"</a>ภาษาอังกฤษ</li>
+		<li><a href="{% url 'home' %}#contact">ติดต่อ</a></li>
+		{% if request.user.is_authenticated %}
+			<li><a href="{% url 'account' %}">บัญชี</a></li>
+			<li><a href="{% url 'logout' %}">ออกจากระบบ</a></li>
+		{% else %}
+			<li><a href="{% url 'login' %}">เข้าสู่ระบบ</a></li>
+		{% endif %}
+	</ul>
+</div>

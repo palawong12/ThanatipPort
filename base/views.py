@@ -19,8 +19,8 @@ def snakegame(request):
 
 def home(request):
     posts = Post.objects.filter(active=True, featured=True)[0:3]
-
-    context = {'posts': posts}
+    imgs = PostImg.objects.filter(active=True, featured=True)[0:3]
+    context = {'posts': posts, 'imgs': imgs}
     return render(request, 'base/index.html', context)
 
 
@@ -219,8 +219,8 @@ def updateProfile(request):
 	#Thailand
 def hometh(request):
     posts = Post.objects.filter(active=True, featured=True)[0:3]
-
-    context = {'posts': posts}
+    imgs = PostImg.objects.filter(active=True, featured=True)[0:3]
+    context = {'posts': posts, 'imgs': imgs}
     return render(request, 'base/indexth.html', context)
 
 
