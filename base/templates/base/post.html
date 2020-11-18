@@ -24,9 +24,9 @@
 		margin-top: 50px;
 		padding: 10px;
 		border:1px solid var(--borderColor);
-		-webkit-box-shadow: -1px 1px 3px -1px rgba(0,0,0,0.75);
-		-moz-box-shadow: -1px 1px 3px -1px rgba(0,0,0,0.75);
-		box-shadow: -1px 1px 3px -1px rgba(0,0,0,0.75);
+		-webkit-box-shadow: -1px 1px 3px -1px rgba(255, 0, 0, 0.75);
+		-moz-box-shadow: -1px 1px 3px -1px rgba(255, 0, 0, 0.75);
+		box-shadow: 2px 3px 6px 5px rgba(255, 0, 0, 0.75);
 	}
 
 	.comment{
@@ -95,39 +95,37 @@
 
 	<p>{{post.body|safe}}</p>
 
-	 Comments: {{post.postcomment_set.all.count}}</h5>
+    <div class="comments-wrapper">
+	<h5>Comments: {{post.postcomment_set.all.count}}</h5>
 		<hr>
 		<!--
 			- Not logged in, output form and say "Register to comment and give room for a message"
 			- When given username 
 		-->
 
+		{% if request.user.is_authenticated %}
 		<form action="" method="POST">
 			{% csrf_token %}
 			<textarea required class="form-control" placeholder="Leave a comment..." name="comment"></textarea>
-			{% if request.user.is_authenticated == False %}
-				<br>
-				<input class="form-control" type="text" name="first_name" placeholder="Name..">
-				<br>
-				<input class="form-control" type="email" name="email" placeholder="Email..">
-				<br>
-				<input class="form-control" type="password" name="password" placeholder="Password..">
-			{% endif %}
 			<br>
 			<input class="btn btn-info" type="submit" value="Submit">
 		</form>
+		{% else %}
+			<p>Create an account to comment:</p>
+			<a class="btn btn-primary" href="{% url 'register' %}">Register/Login</a>
+		{% endif %}
 
 		<hr>
 		{% for comment in post.postcomment_set.all %}
 			<div class="comment">
 				<img class="author-pic" src="{{comment.author.profile_pic.url}}">
 				<div>
-					<p class="comment-author">{{comment.author}}: {{comment.created|date:"M-d-Y"}}</p>
+					<p class="comment-author">{{comment.author}} : {{comment.created|date:"d-M-Y"}}</p>
 					<p class="comment-body">{{comment.body}}</p>
 				</div>
 			</div>
 		{% endfor %}
-	</div>
+		</div>
 </div>
 
 <footer class="py-4 bg-primary text-white-20">

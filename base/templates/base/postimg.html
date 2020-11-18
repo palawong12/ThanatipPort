@@ -1,26 +1,75 @@
-
 {% load static %}
+
 <head>
     <link rel="shortcut icon" href="{% static 'ico/thanatipicon.png' %}">
 
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Russo+One&display=swap"
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Russo+One&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/img.css' %}" />
-    <link rel="stylesheet"  href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
 
- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
- 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+        media="screen">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
     <script>hljs.initHighlightingOnLoad();</script>
 
 </head>
-<body>
+<style type="text/css">
+    .post-container {
+        width: 900px;
+        margin: 0 auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .comments-wrapper {
+        margin-top: 50px;
+        padding: 10px;
+        border: 1px solid var(--borderColor);
+        -webkit-box-shadow: -1px 1px 3px -1px rgba(255, 0, 0, 0.75);
+        -moz-box-shadow: -1px 1px 3px -1px rgba(255, 0, 0, 0.75);
+        box-shadow: 2px 3px 6px 5px rgba(255, 0, 0, 0.75);
+    }
+
+    .comment {
+        display: flex;
+        padding: 15px;
+    }
+
+    .comment-author {
+        font-size: 14px;
+        font-weight: 700;
+        color: rgb(30, 174, 219) !important;
+        margin: 2px;
+    }
+
+    .author-pic {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .comment-body {
+
+        font-size: 14px;
+    }
+
+    @media screen and (max-width: 900px) {
+        .post-container {
+            width: 95%;
+        }
+    }
+</style>
+
+<body style="background-color:#1d1d1d;">
 
     <div class="main-container">
         <br>
@@ -32,15 +81,37 @@
         &nbsp;
         &nbsp;
         &nbsp;
-        <a class="btn btn-sm btn-primary" href="{% url 'album' %}">&laquo Back to Images</a>
+        <a class="btn btn-sm btn-primary" href="{% url 'album' %}" style="font-family:Russo One;color:white;">&laquo
+            Back to Images</a>
         {% if request.user.is_staff %}
-            <a class="btn btn-sm btn-primary" href="{% url 'update_img' img.slug %}">Edit</a>
-            <a class="btn btn-sm btn-danger" href="{% url 'delete_img' img.slug %}">Delete</a>
+        <a class="btn btn-sm btn-primary" href="{% url 'update_img' img.slug %}">Edit</a>
+        <a class="btn btn-sm btn-danger" href="{% url 'delete_img' img.slug %}">Delete</a>
         {% endif %}
-        <center><h1 style="font-family:Russo One;font-size:500%;color:white;" >{{img.headline}}</h1></center>
-        <hr>
+        <br>
+        <hr color="red" size="10">
+        <br>
+        <br>
+        <div class="post-container">
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.tags == 'success' %}
+            <div class="alert alert-success" role="alert">
+                <span>{{message}}</span>
+            </div>
+            {% elif message.tags == 'error' %}
+            <div class="alert alert-danger" role="alert">
+                <span>{{message}}</span>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+        </div>
         <center>
-        <img class="featured_image" src="{{img.picture.url}}">
+            <h1 style="font-family:Russo One;font-size:500%;color:white;">{{img.headline}}</h1>
+        </center>
+        <br>
+        <center>
+            <img class="featured_image" src="{{img.picture.url}}">
         </center>
     </div>
 
@@ -53,89 +124,126 @@
 
             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                 <a href="{{img.picture1.url}}" class="fancybox" rel="ligthbox">
-                    <img  src="{{img.picture1.url}}" class="zoom img-fluid "  alt="">
-                   
+                    <img src="{{img.picture1.url}}" class="zoom img-fluid " alt="">
+
                 </a>
             </div>
             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                 <a href="{{img.picture2.url}}" class="fancybox" rel="ligthbox">
-                    <img  src="{{img.picture2.url}}" class="zoom img-fluid "  alt="">
-            </a>
+                    <img src="{{img.picture2.url}}" class="zoom img-fluid " alt="">
+                </a>
             </div>
-            
+
             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                 <a href="{{img.picture3.url}}" class="fancybox" rel="ligthbox">
-                    <img  src="{{img.picture3.url}}" class="zoom img-fluid "  alt="">
-            </a>
+                    <img src="{{img.picture3.url}}" class="zoom img-fluid " alt="">
+                </a>
             </div>
-            
+
             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                 <a href="{{img.picture4.url}}" class="fancybox" rel="ligthbox">
-                    <img  src="{{img.picture4.url}}" class="zoom img-fluid "  alt="">
-            </a>
+                    <img src="{{img.picture4.url}}" class="zoom img-fluid " alt="">
+                </a>
             </div>
-            
-             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                 <a href="{{img.picture5.url}}" class="fancybox" rel="ligthbox">
-                    <img  src="{{img.picture5.url}}" class="zoom img-fluid "  alt="">
-            </a>
+                    <img src="{{img.picture5.url}}" class="zoom img-fluid " alt="">
+                </a>
             </div>
-            
-             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                 <a href="{{img.picture6.url}}" class="fancybox" rel="ligthbox">
-                    <img  src="{{img.picture6.url}}" class="zoom img-fluid "  alt="">
-            </a>
+                    <img src="{{img.picture6.url}}" class="zoom img-fluid " alt="">
+                </a>
             </div>
-            
-             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                 <a href="{{img.picture7.url}}" class="fancybox" rel="ligthbox">
-                    <img  src="{{img.picture7.url}}" class="zoom img-fluid "  alt="">
-            </a>
+                    <img src="{{img.picture7.url}}" class="zoom img-fluid " alt="">
+                </a>
             </div>
-            
-             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                 <a href="{{img.picture8.url}}" class="fancybox" rel="ligthbox">
-                    <img  src="{{img.picture8.url}}" class="zoom img-fluid "  alt="">
-            </a>
+                    <img src="{{img.picture8.url}}" class="zoom img-fluid " alt="">
+                </a>
             </div>
             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                 <a href="{{img.picture9.url}}" class="fancybox" rel="ligthbox">
-                    <img  src="{{img.picture9.url}}" class="zoom img-fluid "  alt="">
-            </a>
+                    <img src="{{img.picture9.url}}" class="zoom img-fluid " alt="">
+                </a>
             </div>
-            
-           
-           
-       </div>
 
-     
-      
+
+
+        </div>
+
+
+
 
     </div>
+    <div class="post-container">
 
-    
+        <div class="comments-wrapper">
+            <h5 style="font-family:Russo One;font-size:200%;color:white;">Comments : {{img.imgcomment_set.all.count}}
+            </h5>
+            <hr color="red" style="opacity:0.5">
+            <!--
+			- Not logged in, output form and say "Register to comment and give room for a message"
+			- When given username 
+		-->
+            {% if request.user.is_authenticated %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                <textarea required class="form-control" placeholder="Leave a comment..." name="comment"
+                    style="font-family:Russo One;"></textarea>
+                <br>
+                <input class="btn btn-info" type="submit" value="Submit" style="font-family:Russo One;color:white;">
+            </form>
+            {% else %}
+            <p style="font-family:Russo One;color:white;">Create an account to comment:</p>
+            <a class="btn btn-primary" href="{% url 'register' %}"
+                style="font-family:Russo One;color:white;">Register/Login</a>
+            {% endif %}
+
+            <hr color="red" style="opacity:0.5">
+            {% for comment in img.imgcomment_set.all %}
+            <div class="comment">
+                <img class="author-pic" src="{{comment.author.profile_pic.url}}">
+                <div>
+                    <p class="comment-author" style="font-family:Russo One;color:white;">{{comment.author}} :
+                        {{comment.created|date:"d-M-Y"}}</p>
+                    <p class="comment-body" style="font-family:Russo One;color:white;">&nbsp;{{comment.body}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 
 
 
-        <footer class="py-4 bg-primary text-white-20">
-            <center>
-                <h5 style="color:white;">Copyright &copy; Thanatip Portfolio</h5>
-            </center>	
-        </footer>
-    </body>
+    <br>
+    <br>
+    <footer class="py-4 bg-primary text-white-20">
+        <center>
+            <h5 style="color:white;">Copyright &copy; Thanatip Portfolio</h5>
+        </center>
+    </footer>
+</body>
 
-    <script>$(document).ready(function(){
+<script>$(document).ready(function () {
         $(".fancybox").fancybox({
-              openEffect: "none",
-              closeEffect: "none"
-          });
-          
-          $(".zoom").hover(function(){
-              
-              $(this).addClass('transition');
-          }, function(){
-              
-              $(this).removeClass('transition');
-          });
-      });
-          </script>
+            openEffect: "none",
+            closeEffect: "none"
+        });
+
+        $(".zoom").hover(function () {
+
+            $(this).addClass('transition');
+        }, function () {
+
+            $(this).removeClass('transition');
+        });
+    });
+</script>

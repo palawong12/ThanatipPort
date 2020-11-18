@@ -114,12 +114,12 @@ class PostComment(models.Model):
 
 class ImgComment(models.Model):
 	author = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=True)
-	post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, blank=True)
+	post = models.ForeignKey(PostImg, on_delete=models.CASCADE, null=True, blank=True)
 	body = models.TextField(null=True, blank=True)
 	created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
 	def __str__(self):
-		return self.body
+		return str(self.post) + ' ' + str(self.author) + ' ' + 'Comment' + ' ' +str(self.body)
 
 	@property
 	def created_dynamic(self):
