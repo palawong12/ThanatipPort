@@ -5,8 +5,8 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 
 
-admin.sites.AdminSite.site_header = 'THANATIP'
-admin.sites.AdminSite.site_title = 'THANATIP'
+admin.sites.AdminSite.site_header = 'Thanatip Portfolio'
+admin.sites.AdminSite.site_title = 'Thanatip Portfolio'
 
 
 urlpatterns = [
