@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'base.apps.BaseConfig',
     'crispy_forms',
+    'crispy_bootstrap4',
     'django_filters',
     'ckeditor',
     'ckeditor_uploader',
@@ -145,7 +146,10 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
     },
 }
-    
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 AWS_QUERYSTRING_AUTH = False
 
 #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

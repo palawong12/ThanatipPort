@@ -2,7 +2,7 @@
 <div class="nav-wrapper">
 
 	<!-- Link around dots-wrapper added after tutorial video -->
-	<a href="{% url 'home' %}">
+	<a href="{% url 'hometh' %}">
 		<div class="dots-wrapper">
 			<div id="dot-1" class="browser-dot"></div>
 			<div id="dot-2" class="browser-dot"></div>
@@ -13,7 +13,7 @@
 
 	<ul id="navigation">
 		<li><a href="{% url 'home' %}"</a>ภาษาอังกฤษ</li>
-		<li><a href="{% url 'home' %}#contact">ติดต่อ</a></li>
+		<li><a href="{% url 'hometh' %}#contact">ติดต่อ</a></li>
 		{% if request.user.is_authenticated %}
 			<li><a href="{% url 'account' %}">บัญชี</a></li>
 			<li><a href="{% url 'logout' %}">ออกจากระบบ</a></li>

@@ -1,0 +1,28 @@
+:root{
+	--mainColor: #000000;
+	--mainShadow: 12px 12px 24px #dda774, 
+             -12px -12px 24px #e9bf96;
+    --mainRadius: 5px 5px 0 0;
+
+
+	--secondaryColor: #000000;
+	--secondaryShadow:	12px 12px 24px #fff	, 
+             -12px -12px 24px #fff;
+	--secondaryRadius: 5px;
+
+	--borderColor: #fff;
+
+	--mainText: rgb(255, 255, 255);
+	--secondaryText: #fff;
+
+	--themeDotBorder: white;
+
+	--previewBg: rgb(251, 249, 243, 0.3);
+	--previewShadow: #646965;
+
+	--inputField: inset 8px 8px 24px #ddbb9c, 
+            inset -8px -8px 24px #efcbaa;
+
+	--buttonColor: #424242;
+
+}	

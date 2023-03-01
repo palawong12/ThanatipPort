@@ -232,11 +232,15 @@ h6 { font-size: 16px;}
 	background-color: #fff;
 }
 
-#blue-mode{
-	background-color: #192734;
+#dark-mode{
+	background-color: #000000;
 }
 
-#green-mode{
+#blue-mode{
+	background-color: #0b2cbd;
+}
+
+#yellow-mode{
 	background-color: #ecb679;
 }
 
@@ -246,7 +250,6 @@ h6 { font-size: 16px;}
 
 #redx-mode{
 	background-color: #b70104;
-;
 }
 
 #settings-note{

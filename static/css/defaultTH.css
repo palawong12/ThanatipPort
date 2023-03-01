@@ -32,13 +32,13 @@ body *{
 
 h1, h2, h3, h4, h5, h6, strong{
 	color: var(--mainText);
-	font-family: 'Mitr', sans-serif;
+	font-family: 'Russo One', sans-serif;
 	font-weight: 500;
 }
 
 p, li, span, label, input, textarea{
 	color: var(--secondaryText);
-	font-family: 'Mitr', sans-serif;
+	font-family: 'Roboto Mono', monospace;
 }
 
 a{
@@ -179,6 +179,27 @@ h6 { font-size: 16px;}
 	border:2px solid var(--borderColor);
 }
 
+.author-wrapper{
+	display: flex;
+	flex-wrap: wrap;
+
+	
+}
+
+#author-thumbnail{
+	display: block;
+	height: 50px;
+	width: 50px;
+	margin-right: 10px;
+	border-radius: 50%;
+	border:2px solid #888;
+}
+
+#author-twitter{	
+	height: 25px;
+	width: 25px;
+	margin-left: 10px;
+}
 
 #theme-options-wrapper{
 	display: flex;
@@ -211,11 +232,15 @@ h6 { font-size: 16px;}
 	background-color: #fff;
 }
 
-#blue-mode{
-	background-color: #192734;
+#dark-mode{
+	background-color: #000000;
 }
 
-#green-mode{
+#blue-mode{
+	background-color: #0b2cbd;
+}
+
+#yellow-mode{
 	background-color: #ecb679;
 }
 
@@ -225,7 +250,6 @@ h6 { font-size: 16px;}
 
 #redx-mode{
 	background-color: #b70104;
-;
 }
 
 #settings-note{
@@ -370,7 +394,7 @@ h6 { font-size: 16px;}
   }
   ::-webkit-scrollbar-thumb {
 	background:#3772ff;
-	box-shadow:0 -100vh 0 100vh #3772ff;
+	box-shadow:0 -0vh 0 0vh #3772ff;
   }
 
 #contact-form{
@@ -454,5 +478,32 @@ h6 { font-size: 16px;}
 
 }
 
+/* Login Page (START) */
+
+#login-page-wrapper{
+	background: #eaeaea;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#login-form-wrapper{
+	width: 400px;
+	background: #fff;
+	padding: 20px;
+	-webkit-box-shadow: -1px 1px 3px -1px rgba(0,0,0,0.75);
+	-moz-box-shadow: -1px 1px 3px -1px rgba(0,0,0,0.75);
+	box-shadow: -1px 1px 3px -1px rgba(0,0,0,0.75);
+}
+
+@media screen and (max-width: 400px){
+	#login-form-wrapper{
+		width: 95%;
+	}
+}
+
+
+/* Login Page (END) */
 
 

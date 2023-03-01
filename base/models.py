@@ -20,7 +20,7 @@ class Post(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	active = models.BooleanField(default=False)
 	featured = models.BooleanField(default=False)
-	tags = models.ManyToManyField(Tag, null=True, blank=True)
+	tags = models.ManyToManyField(Tag, blank=True)
 	slug = models.SlugField(null=True, blank=True)
 	
 	def __str__(self):
@@ -59,7 +59,7 @@ class PostImg(models.Model):
 	picture9 = models.ImageField(null=True, blank=True, upload_to="gallerys", default="placeholder.png")
 	active = models.BooleanField(default=False)
 	featured = models.BooleanField(default=False)
-	tags = models.ManyToManyField(Tag, null=True, blank=True)
+	tags = models.ManyToManyField(Tag, blank=True)
 	slug = models.SlugField(null=True, blank=True)
 	
 	def __str__(self):

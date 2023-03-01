@@ -13,6 +13,8 @@ from .decorators import *
 from .models import *
 
 
+def game(request):
+    return render(request, 'base/game.html')
 
 def snakegame(request):
     return render(request, 'base/snakegame.html')
